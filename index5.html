@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	 <style>
+          .mark{
+              height: 100px;
+              width: 100px;
+              position: absolute;
+              
+          }
+          .menu {
+            display: flex;
+            height: 600px;
+           
+           
+          }
+          .game {
+            display: flex;
+            height: 600px;
+            display: none;
+
+          }
+          .box {
+            position: absolute;
+            height: 300px;
+            width: 300px;
+            top: 250px;
+            border-radius: 20px;
+            left: 530px;
+              background: rgb(255, 255, 0) radial-gradient(circle at 0 0, rgba(255, 255, 0),rgba(255, 251, 0,.35));
+              box-shadow:
+               inset rgba(0,0,0,.5) -3px -3px 8px,
+               inset rgba(255, 251, 0,.9) 3px 3px 8px,
+               rgba(0,0,0,.8) 3px 3px 8px -3px;
+          }
+          .btn {
+            margin-left: 85px;
+            width: 120px;
+            font-family: arial;
+            padding: 10px 20px; 
+            border-radius: 20px;
+            background: #009c3e;
+            background: linear-gradient(to bottom, #83fcde 0%, #00ffb7 36%, #009973 100%);
+          }
+         
+            body {
+              background-color:#2d3e43;
+              
+            }
+
+            h1 {
+              text-align:center;
+              color:white;
+              position:relative;
+              left:0;
+              text-shadow:
+                1px 1px 0px #c4dbe2,
+                2px 2px 0px #b4d1d9,
+                3px 3px 0px #a6c6cf,
+                4px 4px 0px #94b8c3,
+                5px 5px 0px #87aeb9,
+                6px 6px 0px #7aa3af,
+                7px 7px 0px #6d97a3,
+                8px 8px 0px #618b98,
+                9px 9px 0px #56818e,
+                10px 10px 0px #4c7683,
+                15px 15px 25px rgba(0,0,0,.9);
+                transition: .5s ease-in-out;
+            }
+
+            h1:hover {
+                left:20px;
+              text-shadow:
+                -1px 1px 0px #c4dbe2,
+                -2px 2px 0px #b4d1d9,
+                -3px 3px 0px #a6c6cf,
+                -4px 4px 0px #94b8c3,
+                -5px 5px 0px #87aeb9,
+                -6px 6px 0px #7aa3af,
+                -7px 7px 0px #6d97a3,
+                -8px 8px 0px #618b98,
+                -9px 9px 0px #56818e,
+                -10px 10px 0px #4c7683,
+                -15px 15px 25px rgba(0,0,0,.9);
+            }
+        .box:hover {
+        -webkit-transform: scale(1.04);
+         transform: scale(1.04);
+        }
+        .box1 {
+            display: flex;
+            height: 600px;
+            display: none;
+        }
+         .lose {
+            display: flex;
+            height: 600px;
+            display: none;
+        }
+         .win {
+            display: flex;
+            height: 600px;
+            display: none;
+        }
+
+
+          </style>
+</head>
+<body class="body" style="background-image: url(Twist_Mountain_anime.png); background-size: 100% 100%;">
+    <div class="menu">
+        <h1 class="text" style="color: red; font-size:100px;">POKEMON</h1>
+        <div class="box">
+            <button class="btn play" style="margin-top: 70px;"><b >PLAY</b></button>
+            <button class="btn rule" style="margin-top: 20px;"><b>RULE</b></button>
+            <button class="btn exit" style="margin-top: 20px;"><b >EXIT</b></button>
+        </div>
+    </div>
+
+    <div class="game">
+        <div>
+        <h1 style="font-size: 40px;">POKEMON'S: <span class="count-bugs">0</span></h1>
+        <h1 style="font-size: 40px;">CAUGHT POKEMON'S: <span class="died-bugs">0</span></h1>
+        </div>
+    </div>
+	  
+    <div class="box1">
+        <div class="box">
+            <button class="btn exit2" style="margin-top: 20px;"><b >EXIT</b></button>
+            <h2 style="text-align: center;">Привет, тренер!Твоя задача успеть поймать, как можно больше покемонов за 7 секунд (больше 5)</h2>
+        </div>
+    </div>
+
+    <div class="lose" >
+          <div class="box">
+            <button class="btn exit3" style="margin-top: 20px;"><b >EXIT</b></button>
+            <h2 style="text-align: center;">YOU LOSE</h2>
+            <img src="original.gif" style="width: 200px;  margin-left: 50px">
+        </div>
+    </div>
+
+    <div class="win" >
+          <div class="box">
+            <button class="btn exit4" style="margin-top: 20px;"><b >EXIT</b></button>
+            <h2 style="text-align: center;">YOU WIN!</h2>
+            <img src="pikachu-cheek.gif" style="width: 200px; margin-left: 50px">
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        let count = document.querySelector(".count-bugs");
+        let died = document.querySelector(".died-bugs");
+        let play = document.querySelector(".play");
+        let rule = document.querySelector(".rule");
+        let exit = document.querySelector(".exit");
+        let exit2 = document.querySelector(".exit2");
+         let exit3 = document.querySelector(".exit3");
+          let exit4 = document.querySelector(".exit4");
+        let menu = document.querySelector(".menu");
+        let game = document.querySelector(".game");
+        let body = document.querySelector(".body");
+        let box1 = document.querySelector(".box1");
+         let lose = document.querySelector(".lose");
+          let win = document.querySelector(".win");
+          let tx = document.querySelector(".text");
+       
+        let sum1 = 0
+        let sum2 = 0
+        tx.style.left = "400px";
+        play.onclick = function(){
+        menu.style.display = "none";
+        game.style.display = "block";
+        body.style.backgroundImage = "url(unnamed.jpg)";
+            let randomLeft = function(){
+                let rand = Math.random() * 1000;
+                let round = Math.round(rand);
+                return round;
+
+            }
+
+            let randomTop = function(){
+                let rand = Math.random() * 400;
+                let round = Math.round(rand);
+                return round;
+            }
+
+
+        let createPoint = function() {
+            let point = document.createElement('img');
+        
+            game.appendChild(point);
+            point.src = "pika.png" ;
+            point.classList.add("mark")
+
+            point.style.marginLeft = randomLeft() + "px"
+            point.style.marginTop = randomTop() + "px"
+            sum1=sum1+1;
+            count.innerHTML = sum1;
+
+            point.onclick = function(){
+                sum2=sum2+1;
+                died.innerHTML = sum2;
+                point.style.display = "none";
+            }  
+        } 
+
+         let check = function(){
+
+                if (sum2<2) {
+                 game.style.display = "none";
+                 lose.style.display = "block";
+                 body.style.backgroundImage = "url(Pokemon-BG.jpg)";
+                 sum1 = 0
+                 sum2 = 0
+                count.innerHTML = sum1;
+                died.innerHTML = sum2;
+                clearInterval(time);
+                }
+                if (sum2>2) {
+                 game.style.display = "none";
+                 win.style.display = "block";
+                 body.style.backgroundImage = "url(Pokemon-BG.jpg)";
+                 sum1 = 0
+                 sum2 = 0
+                count.innerHTML = sum1;
+                died.innerHTML = sum2;
+                clearInterval(time);
+                }
+
+            }
+        let time = setInterval(createPoint , 1000)
+        setTimeout(check, 4000);
+        
+       
+       }
+
+       rule.onclick = function(){
+        menu.style.display = "none";
+        box1.style.display = "block";
+        body.style.backgroundImage = "url(bgpika.jpg)";
+       }
+       exit2.onclick = function(){
+        box1.style.display = "none";
+        menu.style.display = "block";
+        tx.style.left = "-1px";
+        body.style.backgroundImage = "url(Twist_Mountain_anime.png)";
+        }
+        exit3.onclick = function(){
+        lose.style.display = "none";
+        menu.style.display = "block";
+        tx.style.left = "-1px";
+        body.style.backgroundImage = "url(Twist_Mountain_anime.png)";
+        }
+           exit4.onclick = function(){
+        win.style.display = "none";
+        menu.style.display = "block";
+        tx.style.left = "-1px";
+        body.style.backgroundImage = "url(Twist_Mountain_anime.png)";
+        }
+    </script>
+</body>
+</html>
